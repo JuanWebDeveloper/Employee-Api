@@ -2,6 +2,12 @@ module.exports = {
 	purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
 	darkMode: false, // or 'media' or 'class'
 	theme: {
+		fontFamily: {
+			pop: ["Poppins"],
+		},
+		container: {
+			center: true,
+		},
 		extend: {},
 	},
 	variants: {

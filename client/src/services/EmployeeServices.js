@@ -67,4 +67,20 @@ employeeServices.updateEmployee = async (data) => {
 	return response;
 };
 
+//* Service To Delete Employees.
+employeeServices.deleteEmployee = async (id) => {
+	let urlDelete = `${URL}/delete/${id}`;
+
+	const response = await axios
+		.delete(urlDelete)
+		.then((response) => {
+			return response.data; // * Controller Response.
+		})
+		.catch((error) => {
+			return error;
+		});
+
+	return response;
+};
+
 export default employeeServices;

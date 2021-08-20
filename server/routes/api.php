@@ -23,3 +23,4 @@ Route::post('/create', [EmployeeController::class, "create"]);
 Route::get('/list', [EmployeeController::class, "list"]);
 Route::get('/edit/{id}', [EmployeeController::class, "edit"]);
 Route::put('/update/{id}', [EmployeeController::class, "update"]);
+Route::delete('/delete/{id}', [EmployeeController::class, "delete"]);

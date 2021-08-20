@@ -89,4 +89,20 @@ class EmployeeController extends Controller
 
         return $response;
     }
+
+    // * Controller To Delete Employees.
+    public function delete($id) {
+        try {
+            $delete = Employee::find($id)->delete(); // * Employee Data Delete.
+
+            $response['response'] = $delete;
+            $response['message'] = "Deleted succesful";
+            $response['status'] = true;
+        } catch (\Exception $e) {
+            $response['message'] = $e->getMessage();
+            $response['status'] = false;
+        }
+
+        return $response;
+    }
 }

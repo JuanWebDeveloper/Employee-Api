@@ -6,17 +6,29 @@ import EmployeeServices from "../../services/EmployeeServices";
 const List = () => {
 	const [listEmployee, setListEmployee] = useState([]);
 
+	async function fetchEmployeeData() {
+		// * Service Request.
+		const response = await EmployeeServices.listOfEmployees();
+
+		// * Data Storage In State.
+		setListEmployee(response.data);
+	}
+
 	useEffect(() => {
-		async function fetchEmployeeData() {
-			// * Service Request.
-			const response = await EmployeeServices.listOfEmployees();
-
-			// * Data Storage In State.
-			setListEmployee(response.data);
-		}
-
 		fetchEmployeeData();
 	}, []);
+
+	const onClickDelete = async (id) => {
+		// eslint-disable-next-line no-restricted-globals
+		let confirming = confirm("Are you sure to delete this item?");
+
+		if (confirming === true) {
+			const response = await EmployeeServices.deleteEmployee(id);
+
+			response.status ? alert(response.message) : alert(response.message);
+			fetchEmployeeData();
+		}
+	};
 
 	return (
 		<div className="container mx-auto">
@@ -70,7 +82,12 @@ const List = () => {
 										>
 											Edit
 										</Link>
-										<button className="py-1 px-2 mx-1 text-white rounded-lg no-underline bg-red-500">Remove</button>
+										<button
+											className="py-1 px-2 mx-1 text-white rounded-lg no-underline bg-red-500"
+											onClick={() => onClickDelete(item.id)}
+										>
+											Remove
+										</button>
 									</td>
 								</tr>
 							);

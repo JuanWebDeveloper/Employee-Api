@@ -64,7 +64,10 @@ const List = () => {
 									</td>
 									<td>
 										<span>Actions</span>
-										<Link to="#" className="py-1 px-2 mx-1 text-white rounded-lg no-underline bg-blue-500">
+										<Link
+											to={`/employee/edit/${item.id}`}
+											className="py-1 px-2 mx-1 text-white rounded-lg no-underline bg-blue-500"
+										>
 											Edit
 										</Link>
 										<button className="py-1 px-2 mx-1 text-white rounded-lg no-underline bg-red-500">Remove</button>

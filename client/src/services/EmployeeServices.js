@@ -35,4 +35,36 @@ employeeServices.listOfEmployees = async () => {
 	return response;
 };
 
+// * Service To Edit Employees.
+employeeServices.editEmployee = async (id) => {
+	let urlEdit = `${URL}/edit/${id}`;
+
+	const response = await axios
+		.get(urlEdit)
+		.then((response) => {
+			return response.data; // * Controller Response.
+		})
+		.catch((error) => {
+			return error;
+		});
+
+	return response;
+};
+
+// * Employees Update Service.
+employeeServices.updateEmployee = async (data) => {
+	const urlUpdate = `${URL}/update/${data.id}`;
+
+	const response = await axios
+		.put(urlUpdate, data)
+		.then((response) => {
+			return response.data; // * Controller Response.
+		})
+		.catch((error) => {
+			return error;
+		});
+
+	return response;
+};
+
 export default employeeServices;

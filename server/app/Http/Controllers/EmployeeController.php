@@ -27,4 +27,21 @@ class EmployeeController extends Controller
 
         return $response;
     }
+
+    // * Controller To List Employees.
+    public function list() {
+        try {
+            $data = Employee::all(); // * Recovery Of Created Data.
+
+            $response['data'] = $data;
+            $response['message'] = "Load successfull";
+            $response['status'] = true;
+
+        } catch (\Exception $error) {
+            $response['message'] = $error->getMessage();
+            $response['status'] = false;
+        }
+
+        return $response;
+    }
 }

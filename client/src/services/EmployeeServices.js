@@ -19,4 +19,20 @@ employeeServices.createEmployee = async (data) => {
 	return response;
 };
 
+// * Service To List Employees.
+employeeServices.listOfEmployees = async () => {
+	let urlList = `${URL}/list`;
+
+	const response = await axios
+		.get(urlList)
+		.then((response) => {
+			return response.data; // * Controller Response.
+		})
+		.catch((error) => {
+			return error;
+		});
+
+	return response;
+};
+
 export default employeeServices;
